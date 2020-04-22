@@ -1,0 +1,44 @@
+{
+    "name": "INIADded Extension",
+    "short_name": "INIADded",
+    "description": "Chrome extension to add various useful functions to \"INIAD MOOCs\"",
+    "version": "7.2.3",
+    "icons": {
+        "16": "img/icon16.png",
+        "48": "img/icon48.png",
+        "128": "img/icon128.png"
+    },
+    "browser_action": {
+        "default_icon": "img/icon16.png",
+        "default_title": "INIADded"
+    },
+    "content_scripts": [{
+        "matches": [
+            "https://moocs.iniad.org/*",
+            "https://g-sys.toyo.ac.jp/*",
+            "https://docs.google.com/presentation/*",
+            "https://app.slack.com/client/T011JFVM143/*"
+        ],
+        "js": [
+            "lib/jquery.min.js",
+            "lib/jquery-ui.min.js",
+            "lib/jszip.min.js",
+            "lib/FileSaver.min.js",
+            "lib/ncmb.min.js",
+            "js/common.js",
+            "js/pythonRepl.js",
+            "js/INIADdedSettings.js",
+            "js/themeColorChange.js",
+            "js/lectureUpdateCheck.js",
+            "js/myCourses.js",
+            "js/stickyNote.js",
+            "js/slideCapture.js"
+        ]
+    }],
+    "background": {
+        "scripts": [
+            "js/background.js"
+        ]
+    },
+    "manifest_version": 2
+}
