@@ -20,7 +20,8 @@
         ],
         "js": [
             "lib/jquery.min.js",
-            "js/main.js"
+            "js/main.js",
+            "js/pythonRepl.js"
         ]
     }],
     "background": {

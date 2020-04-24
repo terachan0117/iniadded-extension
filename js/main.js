@@ -24,7 +24,7 @@ $(document).ready(function () {
 
                 // クエリーパラメーターを取得し処理を分岐
                 switch (getSearch()) {
-                    
+
                     // ストレージクリア (デバック用)
                     case "?storageclear":
                         if (window.confirm("ローカルストレージの内容をすべて削除します。この操作は元に戻せません。本当によろしいですか？\n" +
@@ -33,7 +33,7 @@ $(document).ready(function () {
                         }
                         location.href = "../courses";
                         break;
-                    
+
                     default:
 
                         // コース年度 取得
@@ -85,6 +85,18 @@ $(document).ready(function () {
                                 }
                             }
                         });
+
+                        /* サイドバー */
+
+                        // INIADdedヘッダー 追加
+                        $('<li class="header">INIADded</li>')
+                            .appendTo(".sidebar-menu");
+                        
+                        // Python REPL ボタン 追加
+                        $('<li><a style="cursor:pointer;"><i class="fa fa-terminal sidebar-shortcut-icon"></i><span> <span class="sidebar-menu-text">Python REPL</span></span></a></li>')
+                            .appendTo(".sidebar-menu").on('click', function () {
+                                openPythonRepl();
+                            });
 
                 }
             }
