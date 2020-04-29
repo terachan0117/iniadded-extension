@@ -14,7 +14,7 @@
     },
     "content_scripts": [{
         "matches": [
-            "https://moocs.iniad.org/courses/*",
+            "https://moocs.iniad.org/*",
             "https://g-sys.toyo.ac.jp/*",
             "https://docs.google.com/presentation/*"
         ],
@@ -22,11 +22,11 @@
             "lib/jquery.min.js",
             "lib/jquery-ui.min.js",
             "js/main.js",
+            "js/changeColor.js",
+            "js/setWallpaper.js",
             "js/pythonRepl.js",
             "js/stickyNote.js",
             "js/changeGrid.js",
-            "js/changeColor.js",
-            "js/setWallpaper.js",
             "js/countCharacter.js"
         ]
     }],

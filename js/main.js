@@ -16,6 +16,36 @@ switch (getHostname()) {
     // INIAD MOOCs
     case "moocs.iniad.org":
 
+        // 全ページ共通
+
+        // 埋め込み 別タブで開く ボタン 追加
+        $(".embed-responsive").each(function () {
+            $('<a class="btn btn-sm btn-primary" href="' + $(this).children('iframe').attr("src") + '" target="_blank" title="Open in window" style="position:absolute;top:0px;right:0px;font-size:11.5px;opacity:0.9;"><i class="fa fa-window-restore"></i></a>').appendTo(this);
+        })
+
+
+        /* サイドバー */
+
+        // INIADded Settings ボタン 追加
+        $('<li><a href="https://moocs.iniad.org/courses?INIADded" style="cursor:pointer;"><i class="fa fa-cog sidebar-shortcut-icon"></i><span> <span class="sidebar-menu-text">INIADded Settings</span></span></a></li>')
+            .prependTo(".sidebar-menu");
+
+        // Sticky Note ボタン 追加
+        $('<li><a style="cursor:pointer;"><i class="fa fa-sticky-note sidebar-shortcut-icon"></i><span> <span class="sidebar-menu-text">Sticky Note</span></span></a></li>')
+            .prependTo(".sidebar-menu").on('click', function () {
+                addStickyNote();
+            });
+
+        // Python REPL ボタン 追加
+        $('<li><a style="cursor:pointer;"><i class="fa fa-terminal sidebar-shortcut-icon"></i><span> <span class="sidebar-menu-text">Python REPL</span></span></a></li>')
+            .prependTo(".sidebar-menu").on('click', function () {
+                openPythonRepl();
+            });
+
+        // INIADded ヘッダー 追加
+        $('<li class="header">INIADded</li>')
+            .prependTo('.sidebar-menu');
+
         // コースページ
         if (getPathname().match(/^\/courses\/?(\d{4})?\/?$/)) {
 
@@ -82,24 +112,6 @@ switch (getHostname()) {
                             }
                         }
                     });
-
-                    /* サイドバー */
-
-                    // INIADdedヘッダー 追加
-                    $('<li class="header">INIADded</li>')
-                        .appendTo(".sidebar-menu");
-
-                    // Python REPL ボタン 追加
-                    $('<li><a style="cursor:pointer;"><i class="fa fa-terminal sidebar-shortcut-icon"></i><span> <span class="sidebar-menu-text">Python REPL</span></span></a></li>')
-                        .appendTo(".sidebar-menu").on('click', function () {
-                            openPythonRepl();
-                        });
-                    
-                    // Sticky Note ボタン 追加
-                    $('<li><a style="cursor:pointer;"><i class="fa fa-sticky-note sidebar-shortcut-icon"></i><span> <span class="sidebar-menu-text">Sticky Note</span></span></a></li>')
-                        .appendTo(".sidebar-menu").on('click', function () {
-                            addStickyNote();
-                        });
 
             }
         }
