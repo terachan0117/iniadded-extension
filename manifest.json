@@ -21,7 +21,8 @@
         "js": [
             "lib/jquery.min.js",
             "js/main.js",
-            "js/pythonRepl.js"
+            "js/pythonRepl.js",
+            "js/colorChanger.js"
         ]
     }],
     "background": {
