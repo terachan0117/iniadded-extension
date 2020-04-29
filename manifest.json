@@ -22,7 +22,8 @@
             "lib/jquery.min.js",
             "js/main.js",
             "js/pythonRepl.js",
-            "js/colorChanger.js"
+            "js/setColor.js",
+            "js/setWallpaper.js"
         ]
     }],
     "background": {
