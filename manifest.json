@@ -23,7 +23,8 @@
             "js/main.js",
             "js/pythonRepl.js",
             "js/countCharacter.js",
-            "js/setColor.js",
+            "js/changeGrid.js",
+            "js/changeColor.js",
             "js/setWallpaper.js"
         ]
     }],
