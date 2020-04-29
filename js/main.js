@@ -94,6 +94,12 @@ switch (getHostname()) {
                         .appendTo(".sidebar-menu").on('click', function () {
                             openPythonRepl();
                         });
+                    
+                    // Sticky Note ボタン 追加
+                    $('<li><a style="cursor:pointer;"><i class="fa fa-sticky-note sidebar-shortcut-icon"></i><span> <span class="sidebar-menu-text">Sticky Note</span></span></a></li>')
+                        .appendTo(".sidebar-menu").on('click', function () {
+                            addStickyNote();
+                        });
 
             }
         }
