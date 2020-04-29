@@ -22,6 +22,7 @@
             "lib/jquery.min.js",
             "js/main.js",
             "js/pythonRepl.js",
+            "js/countCharacter.js",
             "js/setColor.js",
             "js/setWallpaper.js"
         ]
