@@ -21,7 +21,7 @@ switch (getHostname()) {
         // 埋め込み 別タブで開く ボタン 追加
         $(".embed-responsive").each(function () {
             $('<a class="btn btn-sm btn-primary" href="' + $(this).children('iframe').attr("src") + '" target="_blank" title="Open in window" style="position:absolute;top:0px;right:0px;font-size:11.5px;opacity:0.9;"><i class="fa fa-window-restore"></i></a>').appendTo(this);
-        })
+        });
 
 
         /* サイドバー */

@@ -13,5 +13,5 @@ $(window).on('load', function () {
         $(this).on('input', function () {
             $(this).prev().text(countCharacters($(this).val()) + ' characters ' + countWords($(this).val()) + ' words');
         });
-    })
+    });
 });
