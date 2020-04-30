@@ -3,8 +3,8 @@ const WALLPAPER = localStorage.getItem("Wallpaper");
 if (WALLPAPER) {
     $(".content-wrapper").css({
         "background": 'url("' + WALLPAPER + '")',
-        "background-position": "center",
         "background-size": "cover",
+        "background-position": "center",
         "background-attachment": "fixed"
     });
     $(".content").css({
