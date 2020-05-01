@@ -1,7 +1,5 @@
 //付箋用要素確保＆付箋表示
-let div = document.createElement('div');
-div.id = 'Sticky-Note-Area';
-document.getElementsByClassName('wrapper')[0].appendChild(div);
+$('<div id="Sticky-Note-Area"></div>').appendTo(".wrapper");
 setStickyNote();
 
 function showStickyNotes() {
@@ -28,7 +26,7 @@ function showStickyNotes() {
         //const keyArray = (keyList[i].slice(10, 33) + '/api' + keyList[i].slice(33)).split('/');
         let s = 0;
         while (s < JSON.parse(valueList[i]).length) {
-            contents += '<a class="list-group-item" href="' + keyList[i].slice(10) + '"><h4><i class="fa fa-sticky-note" style="color:' + JSON.parse(valueList[i])[s]['color'] + ';background:#ddd;"></i> <span class="text-primary">' + htmlEscape(JSON.parse(valueList[i])[s]['title']) + '</span></h4><p style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">' + htmlEscape(JSON.parse(valueList[i])[s]['text']) + '</p></a>';
+            contents += '<a class="list-group-item" href="' + keyList[i].slice(10) + '"><h4><i class="fa fa-sticky-note" style="color:' + JSON.parse(valueList[i])[s]['color'] + ';background:#ddd;"></i> <span class="text-primary">' + escapeHtml(JSON.parse(valueList[i])[s]['title']) + '</span></h4><p style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">' + escapeHtml(JSON.parse(valueList[i])[s]['text']) + '</p></a>';
             s = (s + 1) | 0;
         }
         i = (i + 1) | 0;

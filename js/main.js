@@ -10,24 +10,48 @@ function getSearch() {
     return location.search
 }
 
+function escapeHtml(str) {
+    return str.replace(/[<>&"'`]/g, function (match) {
+        const escape = {
+            '<': '&lt;',
+            '>': '&gt;',
+            '&': '&amp;',
+            '"': '&quot;',
+            "'": '&#39;',
+            '`': '&#x60;'
+        };
+        return escape[match];
+    });
+}
+
+function copyTextToClipboard(textVal) {
+    let copyFrom = document.createElement("textarea");
+    copyFrom.textContent = textVal;
+    let bodyElm = document.getElementsByTagName("body")[0];
+    bodyElm.appendChild(copyFrom);
+    copyFrom.select();
+    let retVal = document.execCommand('copy');
+    bodyElm.removeChild(copyFrom);
+    return retVal;
+}
+
 // ホストネームを取得し処理を分岐
 switch (getHostname()) {
 
     // INIAD MOOCs
     case "moocs.iniad.org":
 
-        // 全ページ共通
+        /*
+        全ページ共通
+        */
 
         // 埋め込み 別タブで開く ボタン 追加
         $(".embed-responsive").each(function () {
             $('<a class="btn btn-sm btn-primary" href="' + $(this).children('iframe').attr("src") + '" target="_blank" title="Open in window" style="position:absolute;top:0px;right:0px;font-size:11.5px;opacity:0.9;"><i class="fa fa-window-restore"></i></a>').appendTo(this);
         });
 
-
-        /* サイドバー */
-
         // INIADded Settings ボタン 追加
-        $('<li><a href="https://moocs.iniad.org/courses?INIADded" style="cursor:pointer;"><i class="fa fa-cog sidebar-shortcut-icon"></i><span> <span class="sidebar-menu-text">INIADded Settings</span></span></a></li>')
+        $('<li><a href="https://moocs.iniad.org/courses?iniadded-settings" style="cursor:pointer;"><i class="fa fa-cog sidebar-shortcut-icon"></i><span> <span class="sidebar-menu-text">INIADded Settings</span></span></a></li>')
             .prependTo(".sidebar-menu");
 
         // Sticky Note ボタン 追加
@@ -46,13 +70,25 @@ switch (getHostname()) {
         $('<li class="header">INIADded</li>')
             .prependTo('.sidebar-menu');
 
-        // コースページ
         if (getPathname().match(/^\/courses\/?(\d{4})?\/?$/)) {
+            /*
+            コースページ
+            */
 
             // クエリーパラメーターを取得し処理を分岐
             switch (getSearch()) {
 
                 // ストレージクリア (デバック用)
+                case "?iniadded-settings":
+                    showSettings();
+                    break;
+
+                // ストレージクリア (デバック用)
+                case "?sticky-notes":
+                showStickyNotes();
+                break;
+
+                    // ストレージクリア (デバック用)
                 case "?storageclear":
                     if (window.confirm("ローカルストレージの内容をすべて削除します。この操作は元に戻せません。本当によろしいですか？\n" +
                             "Delete all the contents of the local storage. This operation cannot be undone. Are you really sure?")) {
@@ -112,8 +148,8 @@ switch (getHostname()) {
                             }
                         }
                     });
-
             }
+
         }
         break;
 

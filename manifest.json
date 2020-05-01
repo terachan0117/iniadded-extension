@@ -20,12 +20,13 @@
         ],
         "js": [
             "lib/jquery.min.js",
+            "js/settings.js",
             "lib/jquery-ui.min.js",
-            "js/main.js",
+            "js/stickyNote.js",
+            "js/main.js",    
             "js/changeColor.js",
             "js/setWallpaper.js",
             "js/pythonRepl.js",
-            "js/stickyNote.js",
             "js/changeGrid.js",
             "js/countCharacter.js"
         ]

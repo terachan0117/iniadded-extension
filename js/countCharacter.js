@@ -7,7 +7,7 @@ function countWords(text) {
 }
 
 $(window).on('load', function () {
-    $("textarea").not(".stickynote-textarea").each(function () {
+    $("textarea").not(".stickynote-textarea, #user-courses").each(function () {
         $('<p class="text-muted">' + countCharacters($(this).val()) + ' characters ' + countWords($(this).val()) + ' words</p>')
             .insertBefore(this);
         $(this).on('input', function () {
