@@ -1,12 +1,13 @@
-const APP_VERSION = "8.0.0";
-
 function showSettings() {
+
+
+
     const contentHeaderContents = '<h1>INIADded Settings</h1><ol class="breadcrumb"><li class="active"><i class="fa fa-dashboard"></i> INIADded Settings</li></ol>';
     const contentHeader = document.getElementsByClassName('content-header');
     contentHeader[0].innerHTML = contentHeaderContents;
 
     let containerFluidContents = '<div class="panel pad-form"><form id="INIADded-Settings-Form">';
-    containerFluidContents += '<div class="media"><div class="media-left"><a href="https://iniadded.tera-chan.com/" target="_blank"><img class="media-object" src="https://iniadded.tera-chan.com/img/icon128.png" alt="INIADded" style="width:73px;height:73px;"></a></div><div class="media-body"><h4 class="media-heading">INIADded Extension (Version ' + APP_VERSION + ')</h4><a class="btn btn-primary btn-sm" href="https://iniadded.tera-chan.com" target="_blank"><i class="fa fa-home"></i> INIADded Official Site</a><br><small>Copyright © ' + new Date().getFullYear() + ' <a href="https://tera-chan.com/" target="_blank">Terachan</a> All Rights Reserved.</small></div></div>';
+    containerFluidContents += '<div class="media"><div class="media-left"><a href="https://iniadded.tera-chan.com/" target="_blank"><img class="media-object" src="https://iniadded.tera-chan.com/img/icon128.png" alt="INIADded" style="width:73px;height:73px;"></a></div><div class="media-body"><h4 class="media-heading">INIADded Extension</h4><a class="btn btn-primary btn-sm" href="https://iniadded.tera-chan.com" target="_blank"><i class="fa fa-home"></i> INIADded Official Site</a><br><small>Copyright © ' + new Date().getFullYear() + ' <a href="https://tera-chan.com/" target="_blank">Terachan</a> All Rights Reserved.</small></div></div>';
     containerFluidContents += '<hr>';
 
     let userCourses = localStorage.getItem("UserCourses");
