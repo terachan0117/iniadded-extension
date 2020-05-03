@@ -1,13 +1,13 @@
 function showSettings() {
-
-
-
     const contentHeaderContents = '<h1>INIADded Settings</h1><ol class="breadcrumb"><li class="active"><i class="fa fa-dashboard"></i> INIADded Settings</li></ol>';
     const contentHeader = document.getElementsByClassName('content-header');
     contentHeader[0].innerHTML = contentHeaderContents;
 
     let containerFluidContents = '<div class="panel pad-form"><form id="INIADded-Settings-Form">';
-    containerFluidContents += '<div class="media"><div class="media-left"><a href="https://iniadded.tera-chan.com/" target="_blank"><img class="media-object" src="https://iniadded.tera-chan.com/img/icon128.png" alt="INIADded" style="width:73px;height:73px;"></a></div><div class="media-body"><h4 class="media-heading">INIADded Extension</h4><a class="btn btn-primary btn-sm" href="https://iniadded.tera-chan.com" target="_blank"><i class="fa fa-home"></i> INIADded Official Site</a><br><small>Copyright © ' + new Date().getFullYear() + ' <a href="https://tera-chan.com/" target="_blank">Terachan</a> All Rights Reserved.</small></div></div>';
+    containerFluidContents += '<div class="media"><div class="media-left"><a href="https://iniadded.tera-chan.com/" target="_blank"><img class="media-object" src="https://iniadded.tera-chan.com/img/icon128.png" alt="INIADded" style="width:73px;height:73px;"></a></div><div class="media-body"><h4 class="media-heading">INIADded Extension</h4>' +
+        '<a class="btn btn-primary btn-sm" href="https://iniadded.tera-chan.com" target="_blank"><i class="fa fa-home"></i> Official Website</a>' +
+        '<a class="btn btn-default btn-sm" href="https://github.com/Terachan0117/iniadded-extension" target="_blank"><i class="fa fa-github"></i> GitHub</a>' +
+        '<br><small>Copyright © ' + new Date().getFullYear() + ' <a href="https://tera-chan.com/" target="_blank">Terachan</a> All Rights Reserved.</small></div></div>';
     containerFluidContents += '<hr>';
 
     let userCourses = localStorage.getItem("UserCourses");
@@ -17,10 +17,6 @@ function showSettings() {
         userCourses = '<div class="form-group row"><label class="col-sm-3 col-form-label">マイコース<br>My Course</label><div class="col-sm-9"><textarea id="user-courses" style="width:100%" class="usercourses-textarea" placeholder="Paste the JSON exported from ToyoNet-G." spellcheck="false"></textarea>* ToyoNet-Gから履修中のコースをインポートできます。<a href="https://g-sys.toyo.ac.jp/univision/action/in/f08/Usin080111" target="_blank"><i class="fa fa-link"></i>リンク先のページ</a>下部にある「Export to clipboard」ボタンを押し、この上に内容をペーストしてください。各フィールドの値は必要に応じて変更できます。空白のまま提出することで初期化されます。<br>* You can import courses that you are taking from ToyoNet-G. Press the “Export to clipboard” button at the bottom of the <a href="https://g-sys.toyo.ac.jp/univision/action/in/f08/Usin080111" target="_blank"><i class="fa fa-link"></i>linked page</a>, and paste the contents onto this. You can change the value of each field as needed. It is initialized by submitting it blank.</div></div>';
     }
     containerFluidContents += userCourses;
-
-    let userCoursesUpload = "";
-    userCoursesUpload = '<div class="form-group row"><label class="col-sm-3 col-form-label">コースエクスポート<br>Export Course</label><div class="col-sm-9"><a class="btn btn-primary" id="User-Courses-Upload"><i class="fa fa-key"></i> 発行 Issue</a><span id="User-Courses-Upload-Id"></span><br>* INIADded Portal アプリに現在登録されているマイコースをインポートするためのAuth Keyを発行します。Auth Keyはページを閉じると確認できなくなりますが、再発行ができます。<br>* Issue an Auth Key to import the My Course currently registered in the INIADded Portal application. The Auth Key cannot be confirmed when you close the page, but you can reissue it.</div></div> ';
-    containerFluidContents += userCoursesUpload;
 
     const stickyNote = '<div class="form-group row"><label class="col-sm-3 col-form-label">付箋<br>Sticky Note</label><div class="col-sm-9"><a class="btn btn-primary" href="https://moocs.iniad.org/courses?sticky-notes"><i class="fa fa-list"></i> 一覧 List</a><button class="btn btn-default" type="button" id="Sticky-Note-Remove-All"><i class="fa fa-trash"></i> 全削除 Delete All</button></div></div>';
     containerFluidContents += stickyNote;
@@ -109,14 +105,6 @@ function showSettings() {
     document.getElementById("INIADded-Settings-Form-Submit").onclick = function () {
         saveINIADdedSettings();
     }
-
-    document.getElementById("User-Courses-Upload").onclick = function () {
-        if (!this.getAttribute('disabled')) {
-            uploadUserCourses(document.getElementById("user-courses").value);
-            this.setAttribute('disabled', 'true');
-        }
-    }
-
 }
 
 function saveINIADdedSettings(auto) {

@@ -70,6 +70,14 @@ switch (getHostname()) {
         $('<li class="header">INIADded</li>')
             .prependTo('.sidebar-menu');
 
+        // Back to top ボタン 追加
+        $('<li><a id="back-to-top" data-toggle="tooltip" title="Top" style="cursor:pointer;left:calc(50vw - 25px);bottom:11.2vh;display:none;position:fixed;"><i class="fa fa-angle-double-up"></i> Top</a></li>')
+            .appendTo('.pager').on('click', function () {
+                $('body, html').animate({
+                    scrollTop: 0
+                }, "normal", "swing");
+            });
+
         if (getPathname().match(/^\/courses\/?(\d{4})?\/?$/)) {
             /*
             コースページ
@@ -83,10 +91,10 @@ switch (getHostname()) {
                     showSettings();
                     break;
 
-                // ストレージクリア (デバック用)
+                    // ストレージクリア (デバック用)
                 case "?sticky-notes":
-                showStickyNotes();
-                break;
+                    showStickyNotes();
+                    break;
 
                     // ストレージクリア (デバック用)
                 case "?storageclear":
@@ -103,7 +111,7 @@ switch (getHostname()) {
                     const CURRENT_YEAR = $(".breadcrumb").text().substring(1);
 
                     // New Lectures ボタン表示
-                    $('<a class="btn btn-primary btn-sm" href="?newlectures"><i class="fa fa-bell"></i> New Lectures <span id="newlectures_badge" class="badge text-primary"></span></a>')
+                    $('<a class="btn btn-primary btn-sm" href="?newlectures"><i class="fa fa-bell"></i> New Lectures <span id="new-lectures-badge" class="badge text-primary"></span></a>')
                         .insertBefore(".breadcrumb");
 
                     // My Courses ボタン表示

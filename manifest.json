@@ -28,7 +28,8 @@
             "js/setWallpaper.js",
             "js/pythonRepl.js",
             "js/changeGrid.js",
-            "js/countCharacter.js"
+            "js/countCharacter.js",
+            "js/backToTop.js"
         ]
     }],
     "background": {
