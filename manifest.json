@@ -23,13 +23,15 @@
             "js/settings.js",
             "lib/jquery-ui.min.js",
             "js/stickyNote.js",
+            "js/newLectures.js",
             "js/main.js",    
             "js/changeColor.js",
             "js/setWallpaper.js",
             "js/pythonRepl.js",
             "js/changeGrid.js",
             "js/countCharacter.js",
-            "js/backToTop.js"
+            "js/backToTop.js",
+            "js/fixedHeader.js"
         ]
     }],
     "background": {

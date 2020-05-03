@@ -82,6 +82,9 @@ switch (getHostname()) {
             /*
             コースページ
             */
+            
+                         // コース年度 取得
+                         const CURRENT_YEAR = $(".breadcrumb").text().substring(1);
 
             // クエリーパラメーターを取得し処理を分岐
             switch (getSearch()) {
@@ -89,6 +92,10 @@ switch (getHostname()) {
                 // ストレージクリア (デバック用)
                 case "?iniadded-settings":
                     showSettings();
+                    break;
+
+                case "?new-lectures":
+                    showNewLectures(CURRENT_YEAR);
                     break;
 
                     // ストレージクリア (デバック用)
@@ -107,15 +114,16 @@ switch (getHostname()) {
 
                 default:
 
-                    // コース年度 取得
-                    const CURRENT_YEAR = $(".breadcrumb").text().substring(1);
+       
+
+                    checkNewLectures(CURRENT_YEAR);
 
                     // New Lectures ボタン表示
-                    $('<a class="btn btn-primary btn-sm" href="?newlectures"><i class="fa fa-bell"></i> New Lectures <span id="new-lectures-badge" class="badge text-primary"></span></a>')
+                    $('<a class="btn btn-primary btn-sm" href="?new-lectures"><i class="fa fa-bell"></i> New Lectures <span id="new-lectures-badge" class="badge text-primary"></span></a>')
                         .insertBefore(".breadcrumb");
 
                     // My Courses ボタン表示
-                    $('<a class="btn btn-default btn-sm" href="?mycourses"><i class="fa fa-book"></i> My Courses</a>')
+                    $('<a class="btn btn-default btn-sm" href="?my-courses"><i class="fa fa-book"></i> My Courses</a>')
                         .insertBefore(".breadcrumb");
 
                     // INIADded バナー表示
