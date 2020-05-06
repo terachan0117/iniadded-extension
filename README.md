@@ -1,5 +1,5 @@
 ﻿# INIADded Extension
-INIADのオンライン教育システム「INIAD MOOCs」に便利機能を追加する Google Chrome™ の拡張機能です。
+INIADのオンライン教育システム「[INIAD MOOCs](https://moocs.iniad.org/)」に様々な便利機能を追加する Google Chrome™ の拡張機能です。
 
 # Features
 * 色や壁紙で見た目をパーソナライズ
