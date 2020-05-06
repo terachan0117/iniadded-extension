@@ -85,8 +85,6 @@ switch (getHostname()) {
 
             // クエリーパラメーターを取得し処理を分岐
             switch (getSearch()) {
-
-                // ストレージクリア (デバック用)
                 case "?iniadded-settings":
                     showSettings();
                     break;
@@ -99,12 +97,11 @@ switch (getHostname()) {
                     showMyCourses(CURRENT_YEAR);
                     break;
 
-                    // ストレージクリア (デバック用)
                 case "?sticky-notes":
                     showStickyNotes();
                     break;
 
-                    // ストレージクリア (デバック用)
+                // ストレージクリア (デバック用)
                 case "?storageclear":
                     if (window.confirm("ローカルストレージの内容をすべて削除します。この操作は元に戻せません。本当によろしいですか？\n" +
                             "Delete all the contents of the local storage. This operation cannot be undone. Are you really sure?")) {
