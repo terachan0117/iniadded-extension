@@ -24,6 +24,7 @@
             "lib/jquery-ui.min.js",
             "js/stickyNote.js",
             "js/newLectures.js",
+            "js/myCourses.js",
             "js/main.js",    
             "js/changeColor.js",
             "js/setWallpaper.js",
@@ -31,7 +32,10 @@
             "js/changeGrid.js",
             "js/countCharacter.js",
             "js/backToTop.js",
-            "js/fixedHeader.js"
+            "js/fixedHeader.js",
+            "lib/FileSaver.min.js",
+            "lib/jszip.min.js",
+            "js/captureSlides.js"
         ]
     }],
     "background": {

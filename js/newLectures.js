@@ -41,7 +41,7 @@ function showNewLectures(year) {
     } else {
         let i = 0;
         while (i < LectureUpdateHistory.length) {
-            const CourseContents = JSON.parse(localStorage.getItem("CourseContents" + year + LectureUpdateHistory[i]));
+            const CourseContents = JSON.parse(localStorage.getItem("CourseContents" + LectureUpdateHistory[i]));
             const url = CourseContents["year"] + "/" + CourseContents["id"] + "/" + CourseContents["topics"][CourseContents["topics"].length - 1]["lectures"][CourseContents["topics"][CourseContents["topics"].length - 1]["lectures"].length - 1]["id"];
             const name_course_en = CourseContents["name_en"];
             const name_course_ja = CourseContents["name_ja"];
