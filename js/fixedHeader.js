@@ -6,6 +6,11 @@ if (HeaderFixed) {
         "width": "100%"
     });
     $(".content-wrapper").css({
-        "margin-top": "50px"
+        "margin-top": $("header").height()
+    });
+    $("header").on('resize', function () {
+        $(".content-wrapper").css({
+            "margin-top": $("header").height()
+        });
     });
 }

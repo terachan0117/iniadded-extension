@@ -2,7 +2,7 @@
     "name": "INIADded Extension",
     "short_name": "INIADded",
     "description": "Chrome extension to add various useful functions to \"INIAD MOOCs\"",
-    "version": "8.0.0",
+    "version": "8.0.1",
     "icons": {
         "16": "img/icon16.png",
         "48": "img/icon48.png",
@@ -21,6 +21,7 @@
         "js": [
             "lib/jquery.min.js",
             "lib/jquery-ui.min.js",
+            "js/modalWindow.js",
             "js/newLectures.js",
             "js/myCourses.js",
             "js/stickyNote.js",

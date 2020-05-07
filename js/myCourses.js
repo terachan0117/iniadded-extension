@@ -59,26 +59,24 @@ function noticeMyCourses() {
 function showMyCourses(year) {
     $(".content-header").html('<h1>List of My Courses</h1><ol class="breadcrumb"><li><i class="fa fa-dashboard"></i> ' + year + '</li><li class="active">My Courses</li></ol>');
 
-    let html = '<div class="row flex">' +
-        '<div class="col-lg-2 col-sm-2 col-xs-2"><div class="well">Mon</div></div>' +
-        '<div class="col-lg-2 col-sm-2 col-xs-2"><div class="well">Tue</div></div>' +
-        '<div class="col-lg-2 col-sm-2 col-xs-2"><div class="well">Wed</div></div>' +
-        '<div class="col-lg-2 col-sm-2 col-xs-2"><div class="well">Thu</div></div>' +
-        '<div class="col-lg-2 col-sm-2 col-xs-2"><div class="well">Fri</div></div>' +
-        '<div class="col-lg-2 col-sm-2 col-xs-2"><div class="well">Sat</div></div>';
-
+    let html = '<div class="panel pad-form"><table class="table table-bordered" style="table-layout:fixed;height:10px;">';
+    html += '<thead><tr><th style="width:55px;">＃</th><th class="text-center">Mon</th><th class="text-center">Tue</th><th class="text-center">Wed</th><th class="text-center">Thu</th><th class="text-center">Fri</th><th class="text-center">Sat</th></tr></thead>';
+    html += '<tbody>';
+    const time_list = ["09:00～10:30", "10:40～12:10", "13:00～14:30", "14:45～16:15", "16:30～18:00", "18:15～19:45"];
     const day_list = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     let n = 0;
     while (n < 6) {
+        html += '<tr><th scope="row"><p class="text-primary">' + (n + 1) + '</p>' + time_list[n] + '</th>';
         let i = 0
         while (i < 6) {
-            html += '<div class="col-lg-2 col-sm-2 col-xs-2"><div class="well" style="height:100%;margin-bottom:0px;padding:15px;" id="' + day_list[i] + (n + 1) + '"></div></div>';
+            html += '<td><a id="' + day_list[i] + (n + 1) + '" class="list-group-item my-courses" style="height:100%;cursor:pointer;"></a></td>';
             i = (i + 1) | 0;
         }
+        html += '</tr>';
         n = (n + 1) | 0;
     }
-
-    html += '</div>';
+    html += '</tbody>';
+    html += '</table></div>';
     $(".content").html(html);
 
     let UserCourses = localStorage.getItem("UserCourses");
@@ -95,7 +93,6 @@ function showMyCourses(year) {
                 teacher = UserCourses[i]["teacher"];
             }
             const period = UserCourses[i]["period"];
-            const time = ["09:00～10:30", "10:40～12:10", "13:00～14:30", "14:45～16:15", "16:30～18:00", "18:15～19:45"][Number(period.slice(-1)) - 1];
             let classroom = "(Classroom not found)";
             if (UserCourses[i]["classroom"]) {
                 classroom = UserCourses[i]["classroom"];
@@ -104,15 +101,75 @@ function showMyCourses(year) {
             if (UserCourses[i]["url"]) {
                 url = UserCourses[i]["url"];
             }
-            const html = '<div class="media"><div class="media-body media-middle">' +
-                '<h4 class="media-heading">' + name + '</h4>' +
-                '<div><i class="fa fa-graduation-cap"></i>' + teacher + '</div>' +
-                '<div><i class="fa fa-clock-o"></i>' + time + ' ' +
-                '<i class="fa fa-map-marker"></i>' + classroom + '</div>' +
-                '<div><i class="fa fa-link"></i> <a href="' + url + '" target="_blank">' + url + '</a></div>' +
-                '</div></div>';
+
+            const html = '<h4 class="text-primary course-name">' + name + '</h4>' +
+                '<ul style="list-style:none;padding-left:0;">' +
+                '<li><i class="fa fa-graduation-cap" style="margin-right:1.5px;"></i>' + teacher + '</li>' +
+                '<li><i class="fa fa-map-marker" style="margin-left:5px;margin-right:6px;"></i>' + classroom + '</li>' +
+                '</ul>';
             $("#" + period).html(html);
             i = (i + 1) | 0;
         }
+
     }
+
+    $("a.my-courses").on('click', function () {
+        if ($(this).children(".course-name").length == 1) {
+            $.getJSON(
+                "https://api.tera-chan.com/api/v0.php/terachan:INIADSyllabus?terachan:courseYear=" + year + "&terachan:courseTitle.ja=" + $(this).children(".course-name").text(),
+                function (json) {
+                    if (json.length === 1) {
+                        showModal(json[0]["terachan:courseWeek"] + json[0]["terachan:coursePeriod"], '<iframe src="' + "https://g-sys.toyo.ac.jp/syllabus/html/gakugai/" + year + "/" + year + "_" + json[0]["terachan:syllabusNo"]["ja"] + ".html" + '" style="width:100%;height:100%;border:0;"></iframe>');
+                    } else {
+                        alert("この科目の詳細なシラバスは提供されていません。\nDetailed syllabuses for this course are not available.");
+                    }
+                })
+        } else {
+            const id = $(this).attr("id");
+            $.getJSON(
+                "https://api.tera-chan.com/api/v0.php/terachan:INIADSyllabus?terachan:courseYear=" + year + "&terachan:courseWeek=" + id.slice(0, 3) + "&terachan:coursePeriod=" + id.slice(-1),
+                function (json) {
+                    let html = '<p>開講されている科目はありません。<br>There are no courses offered.</p>';
+                    if (json.length > 0) {
+                        html = '<p>' + json.length + '科目が開講されています。クリックすると詳細なシラバスを確認できます。<br>';
+                        html += json.length + ' courses are offered in this period. Click each course to see the detailed syllabus.</p>';
+                        html += '<div class="list-group">';
+                        let i = 0;
+                        while (i < json.length) {
+                            let syllabus_url = "javascript:alert(\'この科目の詳細なシラバスは提供されていません。\nDetailed syllabuses for this course are not available.\');";
+                            if (json[i]["terachan:syllabusNo"]["en"]) {
+                                syllabus_url = "https://g-sys.toyo.ac.jp/syllabus/html/gakugai/" + json[i]["terachan:courseYear"] + "/" + json[i]["terachan:courseYear"] + "_" + json[i]["terachan:syllabusNo"]["en"] + ".html";
+                            }
+                            if (json[i]["terachan:syllabusNo"]["ja"]) {
+                                syllabus_url = "https://g-sys.toyo.ac.jp/syllabus/html/gakugai/" + json[i]["terachan:courseYear"] + "/" + json[i]["terachan:courseYear"] + "_" + json[i]["terachan:syllabusNo"]["ja"] + ".html";
+                            }
+                            const semester=json[i]["terachan:courseSemester"]
+                            const title = json[i]["terachan:courseTitle"]["ja"];
+                            let instructor_name = json[i]["terachan:instructorName"];
+                            if (instructor_name.length > 1) {
+                                instructor_name =instructor_name[0]["ja"]+" 他"
+                            } else {
+                                instructor_name =instructor_name[0]["ja"];
+                            }
+                            let study_year = json[i]["terachan:courseStudyYear"];
+                            study_year = study_year[0] + "～" + study_year[study_year.length - 1];
+                            const language = { "Japanese": "日本語", "English": "English", "Other Languages": "Other Languages", "Foreign Language Course":"言語科目" }[json[i]["terachan:courseLanguage"]];
+                            
+                            html += '<a class="list-group-item" href="' + syllabus_url + '" target="_blank"><h4 class="text-primary">' + title + '</h4>' +
+                                '<ul class="list-inline">' +
+                                '<li><i class="fa fa-calendar" style="margin-right:3px;"></i>' + semester + '</li>' +
+                                '<i class="fa fa-graduation-cap" style="margin-right:1.5px;"></i>' + instructor_name + '</li>' +
+                                '<li><i class="fa fa-user-circle" style="margin-right:3px;"></i>' + study_year + '</li>' +
+                                '<li><i class="fa fa-language" style="margin-right:3px;"></i>' + language + '</li>' +
+                                '</ul>';
+
+                            i = (i + 1) | 0;
+                        }
+                        html += '</div>';
+                    }
+                    showModal(id, html);
+                })
+        }
+    });
+
 }

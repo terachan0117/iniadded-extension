@@ -111,9 +111,6 @@ switch (getHostname()) {
                     break;
 
                 default:
-
-
-
                     checkNewLectures(CURRENT_YEAR);
                     noticeMyCourses();
 
@@ -121,9 +118,12 @@ switch (getHostname()) {
                     $('<a class="btn btn-primary btn-sm" href="?new-lectures"><i class="fa fa-bell"></i> New Lectures <span id="new-lectures-badge" class="badge text-primary"></span></a>')
                         .insertBefore(".breadcrumb");
 
+                    
                     // My Courses ボタン表示
-                    $('<a class="btn btn-default btn-sm" href="?my-courses"><i class="fa fa-book"></i> My Courses</a>')
-                        .insertBefore(".breadcrumb");
+                    if (getPathname().match(/^\/courses$/)) {
+                        $('<a class="btn btn-default btn-sm" href="?my-courses"><i class="fa fa-book"></i> My Courses</a>')
+                            .insertBefore(".breadcrumb");
+                    }
 
                     // INIADded バナー表示
                     $('<div style="position:absolute;width:310px;height:60px;right:0px;top:60px;"><iframe src="https://iniadded.tera-chan.com/baner.html?' +
