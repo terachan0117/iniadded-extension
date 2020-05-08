@@ -111,32 +111,33 @@ switch (getHostname()) {
                     break;
 
                 default:
-                    // New Lectures ボタン表示
-                    $('<a class="btn btn-primary btn-sm" href="?new-lectures"><i class="fa fa-bell"></i> New Lectures <span id="new-lectures-badge" class="badge text-primary"></span></a>')
-                        .insertBefore(".breadcrumb");
-                    
-                    const LectureUpdateHistory = sessionStorage.getItem('LectureUpdateHistory' + CURRENT_YEAR);
-                    if (LectureUpdateHistory) {
-                        if (LectureUpdateHistory.length > 0) {
-                            $("#new-lectures-badge").text(LectureUpdateHistory.length);
-                        }
-                    } else {
-                        checkNewLectures(CURRENT_YEAR);
-                    }
-                    noticeMyCourses();
-
-
-                    // My Courses ボタン表示
                     if (getPathname().match(/^\/courses$/)) {
+
+                        // New Lectures ボタン表示
+                        $('<a class="btn btn-primary btn-sm" href="?new-lectures"><i class="fa fa-bell"></i> New Lectures <span id="new-lectures-badge" class="badge text-primary"></span></a>')
+                            .insertBefore(".breadcrumb");
+                        if (sessionStorage.getItem('LectureUpdateHistory' + CURRENT_YEAR) == null) {
+                            checkNewLectures(CURRENT_YEAR);
+                        } else {
+                            const LectureUpdateHistory = JSON.parse(sessionStorage.getItem('LectureUpdateHistory' + CURRENT_YEAR));
+                            if (LectureUpdateHistory.length > 0) {
+                                $("#new-lectures-badge").text(LectureUpdateHistory.length);
+                            }
+                        }
+                        noticeMyCourses();
+
+
+                        // My Courses ボタン表示
                         $('<a class="btn btn-default btn-sm" href="?my-courses"><i class="fa fa-book"></i> My Courses</a>')
                             .insertBefore(".breadcrumb");
-                    }
 
-                    // INIADded バナー表示
-                    $('<div style="position:absolute;width:310px;height:60px;right:0px;top:60px;"><iframe src="https://iniadded.tera-chan.com/baner.html?' +
-                            new Date().getTime() +
-                            '" scrolling="no" style="background-color:transparent;width:100%;height:100%;border:none;"></iframe></div>')
-                        .appendTo("body");
+
+                        // INIADded バナー表示
+                        $('<div style="position:absolute;width:310px;height:60px;right:0px;top:60px;"><iframe src="https://iniadded.tera-chan.com/baner.html?' +
+                                new Date().getTime() +
+                                '" scrolling="no" style="background-color:transparent;width:100%;height:100%;border:none;"></iframe></div>')
+                            .appendTo("body");
+                    }
 
                     // Open Drive ボタン表示 (userLang===ja時のみ)
                     $.ajax({

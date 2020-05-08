@@ -19,7 +19,7 @@ if (WALLPAPER) {
     $(".content>h4, .markdown-block>h4").css({
         "text-shadow": "2px 2px 2px #FFFFFF, 2px -2px 2px #FFFFFF, -2px 2px 2px #FFFFFF, -2px -2px 2px #FFFFFF, 3px 0px 2px #FFFFFF, -3px 0px 2px #FFFFFF, 0px 3px 2px #FFFFFF, 0px -3px 2px #FFFFFF",
     });
-    $(".markdown-block>a, .markdown-block>p, .markdown-block>ul>li, .markdown-block>ol>li").css({
+    $(".markdown-block>a, .markdown-block>p, .markdown-block>ul, .markdown-block>ol").css({
         "text-shadow": "1px 1px 1px #FFFFFF, 1px -1px 1px #FFFFFF, -1px 1px 1px #FFFFFF, -1px -1px 1px #FFFFFF, 2px 0px 1px #FFFFFF, -2px 0px 1px #FFFFFF, 0px 2px 1px #FFFFFF, 0px -2px 1px #FFFFFF",
     });
 }

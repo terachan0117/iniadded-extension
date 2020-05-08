@@ -1,26 +1,24 @@
 function checkNewLectures(year) {
-    // セッションストレージ初期化
+    //セッションストレージ初期化
     sessionStorage.setItem('LectureUpdateHistory' + year, '[]');
-
-    // その年のコースリストを取得
+    //その年のコースリストを取得
     $.getJSON("https://moocs.iniad.org/api/courses/" + year, function (courseList) {
         let i = 0;
         while (i < courseList.length) {
-
-            // コース毎のコンテンツを取得
+            //その年のそのコースのコンテンツを取得
             const id = courseList[i]["id"];
             $.getJSON("https://moocs.iniad.org/api/courses/" + year + "/" + id, function (CourseContents) {
-
-                // 以前の保存データから変更があるかを確認
+                //以前の保存データから変更があるか確認
                 if (localStorage.getItem("CourseContents" + year + id) != JSON.stringify(CourseContents)) {
-                    // 変更があったコースのリスト
+                    //変更あり
                     let LectureUpdateHistory = JSON.parse(sessionStorage.getItem('LectureUpdateHistory' + year));
-
-                    // 変更があったコースのうち講義がないコースを除外
+                    //講義がなくコースだけ追加された場合を除外
                     if (CourseContents["topics"].length > 0) {
+                        //セッションストレージに現アクセスで変更があった講義の開講年＋IDを一時保存
                         LectureUpdateHistory.push(year + id);
                         sessionStorage.setItem('LectureUpdateHistory' + year, JSON.stringify(LectureUpdateHistory));
                     }
+                    //以前の保存データを更新
                     localStorage.setItem("CourseContents" + year + id, JSON.stringify(CourseContents));
                     if (LectureUpdateHistory.length > 0) {
                         $("#new-lectures-badge").text(LectureUpdateHistory.length);

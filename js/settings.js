@@ -1,4 +1,4 @@
-const APP_VERSION = "8.0.2";
+const APP_VERSION = "8.0.3";
 
 function showSettings() {
     $(".content-header").html('<h1>INIADded Settings</h1><ol class="breadcrumb"><li class="active"><i class="fa fa-dashboard"></i> INIADded Settings</li></ol>');
