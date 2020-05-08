@@ -1,6 +1,6 @@
 ﻿# INIADded Extension
 
-![](https://lh3.googleusercontent.com/1l1G3rZsyOvGCgn4YCh4_SkLTw4LiTeFj13I872GOmlQsfJ-8nl7P2BFT0PciA_k4WVoJBERmZU=w1280-h800-e365)
+![](./img/screenshot1.png)
 
 INIADのオンライン教育システム「[INIAD MOOCs](https://moocs.iniad.org/)」に様々な便利機能を追加する Google Chrome™ の拡張機能です。
 
