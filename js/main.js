@@ -101,7 +101,7 @@ switch (getHostname()) {
                     showStickyNotes();
                     break;
 
-                // ストレージクリア (デバック用)
+                    // ストレージクリア (デバック用)
                 case "?storageclear":
                     if (window.confirm("ローカルストレージの内容をすべて削除します。この操作は元に戻せません。本当によろしいですか？\n" +
                             "Delete all the contents of the local storage. This operation cannot be undone. Are you really sure?")) {
@@ -111,14 +111,21 @@ switch (getHostname()) {
                     break;
 
                 default:
-                    checkNewLectures(CURRENT_YEAR);
-                    noticeMyCourses();
-
                     // New Lectures ボタン表示
                     $('<a class="btn btn-primary btn-sm" href="?new-lectures"><i class="fa fa-bell"></i> New Lectures <span id="new-lectures-badge" class="badge text-primary"></span></a>')
                         .insertBefore(".breadcrumb");
-
                     
+                    const LectureUpdateHistory = sessionStorage.getItem('LectureUpdateHistory' + CURRENT_YEAR);
+                    if (LectureUpdateHistory) {
+                        if (LectureUpdateHistory.length > 0) {
+                            $("#new-lectures-badge").text(LectureUpdateHistory.length);
+                        }
+                    } else {
+                        checkNewLectures(CURRENT_YEAR);
+                    }
+                    noticeMyCourses();
+
+
                     // My Courses ボタン表示
                     if (getPathname().match(/^\/courses$/)) {
                         $('<a class="btn btn-default btn-sm" href="?my-courses"><i class="fa fa-book"></i> My Courses</a>')

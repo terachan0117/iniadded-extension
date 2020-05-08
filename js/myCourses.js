@@ -41,7 +41,7 @@ function noticeMyCourses() {
                 if (UserCourses[i]["url"]) {
                     url = UserCourses[i]["url"];
                 }
-                const html = '<div class="well my-course bg-primary" style="background-color:#3c8dbc;margin-top: 30px;"><div class="media">' +
+                const html = '<div class="well my-course bg-primary" style="background-color:#3c8dbc;border-color:#367fa9;margin-top: 30px;"><div class="media">' +
                     '<div class="media-body media-middle"><p><i class="fa fa-angle-double-right"></i> Now</p>' +
                     '<h4 class="media-heading">' + name + '</h4>' +
                     '<i class="fa fa-graduation-cap"></i> ' + teacher +
