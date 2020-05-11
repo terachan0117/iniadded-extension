@@ -133,10 +133,18 @@ switch (getHostname()) {
 
 
                         // INIADded バナー表示
-                        $('<div style="position:absolute;width:310px;height:60px;right:0px;top:60px;"><iframe src="https://iniadded.tera-chan.com/baner.html?' +
+                        $('<div class="iniadded-baner" style="position:absolute;width:310px;height:60px;right:0px;"><iframe src="https://iniadded.tera-chan.com/baner.html?' +
                                 new Date().getTime() +
                                 '" scrolling="no" style="background-color:transparent;width:100%;height:100%;border:none;"></iframe></div>')
                             .appendTo("body");
+                        $(".iniadded-baner").css({
+                            "top": 10 + $(".main-header").height()
+                        });
+                        $(window).on("resize", function () {
+                            $(".iniadded-baner").css({
+                                "top": 10 + $(".main-header").height()
+                            });
+                        });
                     }
 
                     // Open Drive ボタン表示 (userLang===ja時のみ)

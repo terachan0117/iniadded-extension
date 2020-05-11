@@ -6,11 +6,11 @@ if (HeaderFixed) {
         "width": "100%"
     });
     $(".content-wrapper").css({
-        "margin-top": $("header").height()
+        "margin-top": $(".main-header").height()
     });
-    $("header").on('resize', function () {
+    $(window).on("resize", function () {
         $(".content-wrapper").css({
-            "margin-top": $("header").height()
+            "margin-top": $(".main-header").height()
         });
     });
 }
