@@ -16,7 +16,7 @@ if (WALLPAPER) {
     $(".content>h2>div").css({
         "text-shadow": "none",
     });
-    $(".content>h4, .markdown-block>h4").css({
+    $(".content-header>h4, .content>h4, .markdown-block>h4").css({
         "text-shadow": "2px 2px 2px #FFFFFF, 2px -2px 2px #FFFFFF, -2px 2px 2px #FFFFFF, -2px -2px 2px #FFFFFF, 3px 0px 2px #FFFFFF, -3px 0px 2px #FFFFFF, 0px 3px 2px #FFFFFF, 0px -3px 2px #FFFFFF",
     });
     $(".markdown-block>a, .markdown-block>p, .markdown-block>ul, .markdown-block>ol").css({

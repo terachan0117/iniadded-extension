@@ -75,6 +75,13 @@ switch (getHostname()) {
                 }, "normal", "swing");
             });
 
+        // ユーザー非表示
+        if (localStorage.getItem("HideAccount")) {
+            $(".user-menu>a>img, .user-menu>a>span").css({
+                "visibility": "hidden"
+            });
+        }
+
         if (getPathname().match(/^\/courses\/?(\d{4})?\/?$/)) {
             /*
             コースページ
@@ -101,15 +108,6 @@ switch (getHostname()) {
                     showStickyNotes();
                     break;
 
-                    // ストレージクリア (デバック用)
-                case "?storageclear":
-                    if (window.confirm("ローカルストレージの内容をすべて削除します。この操作は元に戻せません。本当によろしいですか？\n" +
-                            "Delete all the contents of the local storage. This operation cannot be undone. Are you really sure?")) {
-                        localStorage.clear();
-                    }
-                    location.href = "../courses";
-                    break;
-
                 default:
                     if (getPathname().match(/^\/courses$/)) {
 
@@ -130,7 +128,6 @@ switch (getHostname()) {
                         // My Courses ボタン表示
                         $('<a class="btn btn-default btn-sm" href="?my-courses"><i class="fa fa-book"></i> My Courses</a>')
                             .insertBefore(".breadcrumb");
-
 
                         // INIADded バナー表示
                         $('<div class="iniadded-baner" style="position:absolute;width:310px;height:60px;right:0px;"><iframe src="https://iniadded.tera-chan.com/baner.html?' +
@@ -174,11 +171,14 @@ switch (getHostname()) {
                                         CURRENT_YEAR + '%20' +
                                         encodeURI(courseName) + '%20parent:1KyD2j3o1_IeK7Gum676Ssd0uKDiAybQJ';
                                     $('<a class="btn btn-default" href="' + driveUrl + '" target="_blank"><i class="fa fa-folder-open"></i> Open Drive</a>')
-                                        .appendTo($(this).find(".media-body"));
+                                        .appendTo($(this).find(".media-body").not(".reminder-body"));
                                 });
                             }
                         }
                     });
+
+                    // Reminder 表示
+                    showReminders();
             }
 
         }

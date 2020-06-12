@@ -2,7 +2,7 @@
     "name": "INIADded Extension",
     "short_name": "INIADded",
     "description": "Chrome extension to add various useful functions to \"INIAD MOOCs\"",
-    "version": "8.0.4",
+    "version": "8.1.0",
     "icons": {
         "16": "img/icon16.png",
         "48": "img/icon48.png",
@@ -18,25 +18,29 @@
             "https://g-sys.toyo.ac.jp/*",
             "https://docs.google.com/presentation/*"
         ],
+        "css": [
+            "css/style.css"
+        ],
         "js": [
             "lib/jquery.min.js",
             "lib/jquery-ui.min.js",
-            "js/modalWindow.js",
-            "js/newLectures.js",
-            "js/myCourses.js",
-            "js/stickyNote.js",
+            "js/modal-window.js",
+            "js/new-lectures.js",
+            "js/my-courses.js",
+            "js/sticky-note.js",
             "js/settings.js",
+            "js/problem-reminder.js",
             "js/main.js",    
-            "js/changeColor.js",
-            "js/setWallpaper.js",
-            "js/fixedHeader.js",
-            "js/changeGrid.js",
-            "js/countCharacter.js",
-            "js/backToTop.js",
-            "js/pythonRepl.js",
+            "js/change-color.js",
+            "js/set-wallpaper.js",
+            "js/fixed-header.js",
+            "js/change-grid.js",
+            "js/count-character.js",
+            "js/back-to-top.js",
+            "js/python-repl.js",
             "lib/FileSaver.min.js",
             "lib/jszip.min.js",
-            "js/captureSlides.js"
+            "js/capture-slides.js"
         ]
     }],
     "background": {
