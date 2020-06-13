@@ -1,4 +1,4 @@
-const APP_VERSION = "8.1.0";
+const APP_VERSION = "8.1.2";
 
 function showSettings() {
     let header_html = '<h1>INIADded Settings</h1><ol class="breadcrumb"><li class="active"><i class="fa fa-dashboard"></i> INIADded Settings</li></ol>';
