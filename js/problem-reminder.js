@@ -122,6 +122,10 @@ function showReminders() {
         let reminder_wells = '';
         let i = 0;
         while (i < reminders.length) {
+            let date = new Date(new Date().getFullYear() + '-' + ("0" + (new Date().getMonth() + 1)).slice(-2) + '-' + ("0" + new Date().getDate()).slice(-2));
+            if (reminders[i]["date"]) {
+                date = new Date(reminders[i]["date"]);
+            }
             reminder_wells += '<div class="col-lg-4 col-sm-6 col-xs-12"><div class="well problem-reminder-well" data-id="' + reminders[i]["id"] + '"><div class="media">' +
                 '<div class="media-left media-middle">' +
                 '<div id="problem_reminder_status_' + i + '"></div>' +
@@ -129,6 +133,7 @@ function showReminders() {
                     "ja": "締め切り:",
                     "en": "Deadline:"
                 } [reminders[i]["lang"]] + '<input class="problem-reminder-date" type="date" pattern="\d{4}-\d{2}-\d{2}" value="' + reminders[i]["date"] + '"></label>' +
+                '<a class="btn btn-sm btn-default" href="https://www.google.com/calendar/event?action=TEMPLATE&text=' + reminders[i]["title"] + '&details=URL: ' + reminders[i]["url"] + '&dates=' + date.toISOString().replace(/[-:.Z]/g, "").slice(0, -10) + '/' + new Date(date.setDate(date.getDate() + 1)).toISOString().replace(/[-:.Z]/g, "").slice(0, -10) + '" target="_blank"><i class="fa fa-calendar"></i> Add Calendar</a>' +
                 '</div>' +
                 '<div class="media-body media-middle reminder-body"><h4 class="media-heading">' + reminders[i]["title"] + '</h4>' +
                 '<a class="btn btn-success" href="' + reminders[i]["url"] + '"><i class="fa fa-pencil"></i> Open Problems</a>' +

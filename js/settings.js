@@ -1,4 +1,4 @@
-const APP_VERSION = "8.1.2";
+const APP_VERSION = "8.1.3";
 
 function showSettings() {
     let header_html = '<h1>INIADded Settings</h1><ol class="breadcrumb"><li class="active"><i class="fa fa-dashboard"></i> INIADded Settings</li></ol>';
@@ -13,7 +13,7 @@ function showSettings() {
         '<div class="media-body">' +
         '<h4 class="media-heading">INIADded Extension (Version ' + APP_VERSION + ')</h4>' +
         '<a class="btn btn-primary btn-sm" href="https://iniadded.tera-chan.com" target="_blank"><i class="fa fa-home"></i> 公式サイト Official website</a>' +
-        '<a class="btn btn-default btn-sm" href="https://iniadded.tera-chan.com/#extension" target="_blank"><i class="fa fa-question-circle"></i> 使い方 How to use</a>' +
+        '<a class="btn btn-default btn-sm" href="https://iniadded.tera-chan.com/documents/" target="_blank"><i class="fa fa-question-circle"></i> 使い方 How to use</a>' +
         '<div style="font-size:13px;">Copyright © 2019-' + new Date().getFullYear() + ' <a href="https://tera-chan.com/" target="_blank">Terachan</a> All Rights Reserved.</div>' +
         '</div>' +
         '</div>' +
