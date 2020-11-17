@@ -22,11 +22,9 @@ jobs:
         pip install beautifulsoup4
     - name: Run script
       run: |
-        rm -f ./data/.gitkeep
-        python main.py
-        mv opendata.zip ./data
+        cd tool
+        python user_counter.py
     - name: deploy
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./data
