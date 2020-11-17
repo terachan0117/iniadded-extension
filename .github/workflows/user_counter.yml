@@ -2,7 +2,7 @@ name: User Counter
 
 on:
   schedule:
-    - cron:  '52 9 * * *'
+    - cron:  '52 8 * * *'
 
 jobs:
   build:
