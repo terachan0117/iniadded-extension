@@ -42,9 +42,11 @@ switch (getHostname()) {
         全ページ共通
         */
 
-        // 埋め込み 別タブで開く ボタン 追加
+        // スライドダウンロードボタン・別タブで開くボタン追加
         $(".embed-responsive").each(function () {
-            $('<a class="btn btn-sm btn-primary" href="' + $(this).children('iframe').attr("src") + '" target="_blank" title="Open in window" style="position:absolute;top:0px;right:0px;font-size:11.5px;opacity:0.9;"><i class="fa fa-window-restore"></i></a>').appendTo(this);
+            const url = $(this).children('iframe').attr('src');
+            $(this).append('<a class="btn btn-sm btn-primary" title="Open in window" href="'+url + '" target="_blank" style="position: absolute;top: 0px;right: 0px;font-size: 11.5px;opacity: 0.9;"><i class="fa fa-window-restore"></i></a>');
+            $(this).parent().append('<a class="btn btn-default" href="'+url + '&download=true" target="_blank"><i class="fa fa-download"></i> Slide Download</a>');
         });
 
         // INIADded Settings ボタン 追加
@@ -184,18 +186,9 @@ switch (getHostname()) {
         }
         break;
     case "docs.google.com":
-        $('<div class="goog-inline-block goog-flat-button" title="Capture this slide and download it in SVG format">Capture<br>this slide</div>')
-            .appendTo(".punch-viewer-nav-fixed").on('click', function () {
-                captureThisSlide();
-            });
-        $('<div class="goog-inline-block goog-flat-button" title="Capture all slides and download it in SVG format">Capture<br>all slides</div>')
-            .appendTo(".punch-viewer-nav-fixed").on('click', function () {
-                captureAllSlides();
-            });
-        $('<div class="goog-inline-block goog-flat-button" title="Copy the text on this slide to the clipboard">Copy<br>the text</div>')
-            .appendTo(".punch-viewer-nav-fixed").on('click', function () {
-                copySlideText();
-            });
+        if (window.location.search.match(/download=true/)) {
+            downloadSlide()
+        }
         break;
 
     case "g-sys.toyo.ac.jp":

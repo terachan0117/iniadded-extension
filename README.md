@@ -30,10 +30,10 @@ INIADのオンライン教育システム「[INIAD MOOCs](https://moocs.iniad.or
 スライドの複製は、著作権法に違反しない範囲で行ってください。二次配布など私的利用の範囲を超えた場合は法律違反となる場合があります。スライドの複製はユーザのローカル環境で行っており、当作者サーバでの複製は行っておりません。
 
 # Author
-* Terachan(Issei Terada)
+* Issei Terada
 
 # Contact
-お問合わせは、[こちら](https://tera-chan.com/contact.html)からお願いいたします。
+お問合わせは、[こちら](https://tera-chan.com/#contact)からお願いいたします。
 
 # License
 本ソフトウェアは、[MITライセンス](./LICENSE)の下で提供されています。
