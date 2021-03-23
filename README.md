@@ -1,6 +1,6 @@
 ﻿# INIADded Extension
 
-![](./img/screenshot1.png)
+![](./img/screenshot.png)
 
 INIADのオンライン教育システム「[INIAD MOOCs](https://moocs.iniad.org/)」に様々な便利機能を追加する Google Chrome™ の拡張機能です。
 
@@ -31,9 +31,6 @@ INIADのオンライン教育システム「[INIAD MOOCs](https://moocs.iniad.or
 
 # Author
 * Issei Terada
-
-# Contact
-お問合わせは、[こちら](https://tera-chan.com/#contact)からお願いいたします。
 
 # License
 本ソフトウェアは、[MITライセンス](./LICENSE)の下で提供されています。
